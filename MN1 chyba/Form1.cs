@@ -130,46 +130,46 @@ namespace MN1_chyba
             //odczyt reaktancji I1
             foo = ReadData("Z11");
             if (Complex.IsNaN(foo)) return;
-            par.X10[0] = foo;
+            par.Z10[0] = foo;
 
             foo = ReadData("Z12");
             if (Complex.IsNaN(foo)) return;
-            par.X10[1] = foo;
+            par.Z10[1] = foo;
 
             foo = ReadData("Z13");
             if (Complex.IsNaN(foo)) return;
-            par.X10[2] = foo;
+            par.Z10[2] = foo;
 
             //odczyt reaktancji I2
             foo = ReadData("Z21");
             if (Complex.IsNaN(foo)) return;
-            par.X20[0] = foo;
+            par.Z20[0] = foo;
 
             foo = ReadData("Z22");
             if (Complex.IsNaN(foo)) return;
-            par.X20[1] = foo;
+            par.Z20[1] = foo;
 
             foo = ReadData("Z23");
             if (Complex.IsNaN(foo)) return;
-            par.X20[2] = foo;
+            par.Z20[2] = foo;
 
             //odczyt reaktancji I3
             foo = ReadData("Z31");
             if (Complex.IsNaN(foo)) return;
-            par.X30[0] = foo;
+            par.Z30[0] = foo;
 
             foo = ReadData("Z32");
             if (Complex.IsNaN(foo)) return;
-            par.X30[1] = foo;
+            par.Z30[1] = foo;
 
             foo = ReadData("Z33");
             if (Complex.IsNaN(foo)) return;
-            par.X30[2] = foo;
+            par.Z30[2] = foo;
 
             //połączenie pojedyńczych reaktancji na każdej gałęzi
-            par.X1 = par.X10[0] + par.X10[1] + par.X10[2];
-            par.X2 = par.X20[0] + par.X20[1] + par.X20[2];
-            par.X3 = par.X30[0] + par.X30[1] + par.X30[2];
+            par.Z1 = par.Z10[0] + par.Z10[1] + par.Z10[2];
+            par.Z2 = par.Z20[0] + par.Z20[1] + par.Z20[2];
+            par.Z3 = par.Z30[0] + par.Z30[1] + par.Z30[2];
 
             CalculateResults();
         }
@@ -225,53 +225,53 @@ namespace MN1_chyba
                 powerIn.Im.ToString("E5") + " [Var]";
 
             //gałąź I1
-            Complex powerOut11 = (par.X10[0] * par.I[1]) * par.I[1].Conjugate;
-            if (par.X10[0].Im == 0) label_Z11_power.Text = powerOut11.Re.ToString("E2") + " [W]";
+            Complex powerOut11 = (par.Z10[0] * par.I[1]) * par.I[1].Conjugate;
+            if (par.Z10[0].Im == 0) label_Z11_power.Text = powerOut11.Re.ToString("E2") + " [W]";
             else label_Z11_power.Text = powerOut11.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut12 = (par.X10[1] * par.I[1]) * par.I[1].Conjugate;
-            if (par.X10[1].Im == 0) label_Z12_power.Text = powerOut12.Im.ToString("E3") + " [W]";
+            Complex powerOut12 = (par.Z10[1] * par.I[1]) * par.I[1].Conjugate;
+            if (par.Z10[1].Im == 0) label_Z12_power.Text = powerOut12.Im.ToString("E3") + " [W]";
             else label_Z12_power.Text = powerOut12.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut13 = (par.X10[2] * par.I[1]) * par.I[1].Conjugate;
-            if (par.X10[2].Im == 0) label_Z13_power.Text = powerOut13.Im.ToString("E3") + " [W]";
+            Complex powerOut13 = (par.Z10[2] * par.I[1]) * par.I[1].Conjugate;
+            if (par.Z10[2].Im == 0) label_Z13_power.Text = powerOut13.Im.ToString("E3") + " [W]";
             else label_Z13_power.Text = powerOut13.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut1 = (par.X1 * par.I[1]) * par.I[1].Conjugate;
+            Complex powerOut1 = (par.Z1 * par.I[1]) * par.I[1].Conjugate;
             label_Z1_power.Text = powerOut1.Re.ToString("E5") + " [W]\n" +
                 powerOut1.Im.ToString("E5") + " [Var]";
 
             //gałąź I2
-             Complex powerOut21 = (par.X20[0] * par.I[2]) * par.I[2].Conjugate;
-            if (par.X20[0].Im == 0) label_Z21_power.Text = powerOut21.Re.ToString("E2") + " [W]";
+             Complex powerOut21 = (par.Z20[0] * par.I[2]) * par.I[2].Conjugate;
+            if (par.Z20[0].Im == 0) label_Z21_power.Text = powerOut21.Re.ToString("E2") + " [W]";
             else label_Z21_power.Text = powerOut21.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut22 = (par.X20[1] * par.I[2]) * par.I[2].Conjugate;
-            if (par.X20[1].Im == 0) label_Z22_power.Text = powerOut22.Im.ToString("E3") + " [W]";
+            Complex powerOut22 = (par.Z20[1] * par.I[2]) * par.I[2].Conjugate;
+            if (par.Z20[1].Im == 0) label_Z22_power.Text = powerOut22.Im.ToString("E3") + " [W]";
             else label_Z22_power.Text = powerOut22.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut23 = (par.X20[2] * par.I[2]) * par.I[2].Conjugate;
-            if (par.X20[2].Im == 0) label_Z23_power.Text = powerOut23.Im.ToString("E3") + " [W]";
+            Complex powerOut23 = (par.Z20[2] * par.I[2]) * par.I[2].Conjugate;
+            if (par.Z20[2].Im == 0) label_Z23_power.Text = powerOut23.Im.ToString("E3") + " [W]";
             else label_Z23_power.Text = powerOut23.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut2 = (par.X2 * par.I[2]) * par.I[2].Conjugate;
+            Complex powerOut2 = (par.Z2 * par.I[2]) * par.I[2].Conjugate;
             label_Z2_power.Text = powerOut2.Re.ToString("E5") + " [W]\n" +
                 powerOut2.Im.ToString("E5") + " [Var]";
 
             //gałąź I3
-            Complex powerOut31 = (par.X30[0] * par.I[3]) * par.I[3].Conjugate;
-            if (par.X30[0].Im == 0) label_Z31_power.Text = powerOut31.Re.ToString("E2") + " [W]";
+            Complex powerOut31 = (par.Z30[0] * par.I[3]) * par.I[3].Conjugate;
+            if (par.Z30[0].Im == 0) label_Z31_power.Text = powerOut31.Re.ToString("E2") + " [W]";
             else label_Z31_power.Text = powerOut31.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut32 = (par.X30[1] * par.I[3]) * par.I[3].Conjugate;
-            if (par.X30[1].Im == 0) label_Z32_power.Text = powerOut32.Im.ToString("E3") + " [W]";
+            Complex powerOut32 = (par.Z30[1] * par.I[3]) * par.I[3].Conjugate;
+            if (par.Z30[1].Im == 0) label_Z32_power.Text = powerOut32.Im.ToString("E3") + " [W]";
             else label_Z32_power.Text = powerOut32.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut33 = (par.X30[2] * par.I[3]) * par.I[3].Conjugate;
-            if (par.X30[2].Im == 0) label_Z33_power.Text = powerOut33.Im.ToString("E3") + " [W]";
+            Complex powerOut33 = (par.Z30[2] * par.I[3]) * par.I[3].Conjugate;
+            if (par.Z30[2].Im == 0) label_Z33_power.Text = powerOut33.Im.ToString("E3") + " [W]";
             else label_Z33_power.Text = powerOut33.Im.ToString("E2") + " [Var]";
 
-            Complex powerOut3 = (par.X3 * par.I[3]) * par.I[3].Conjugate;
+            Complex powerOut3 = (par.Z3 * par.I[3]) * par.I[3].Conjugate;
             label_Z3_power.Text = powerOut3.Re.ToString("E5") + " [W]\n" +
                 powerOut3.Im.ToString("E5") + " [Var]";
 

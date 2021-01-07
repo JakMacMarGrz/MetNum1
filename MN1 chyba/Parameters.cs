@@ -13,13 +13,13 @@ namespace MN1_chyba
         public double E2 { get; set; }
         public double f { get; set; }
 
-        public Complex[] X10 { get; set; } = new Complex[3];
-        public Complex[] X20 { get; set; } = new Complex[3];
-        public Complex[] X30 { get; set; } = new Complex[3];
+        public Complex[] Z10 { get; set; } = new Complex[3];
+        public Complex[] Z20 { get; set; } = new Complex[3];
+        public Complex[] Z30 { get; set; } = new Complex[3];
 
-        public Complex X1 { get; set; }
-        public Complex X2 { get; set; }
-        public Complex X3 { get; set; }
+        public Complex Z1 { get; set; }
+        public Complex Z2 { get; set; }
+        public Complex Z3 { get; set; }
 
         public Complex[,] A { get; set; } = new Complex[3 + 1, 3 + 1];
         public Complex[] B { get; set; } = new Complex[3 + 1];
@@ -30,8 +30,8 @@ namespace MN1_chyba
 
         public void CreateMatrix()
         {
-            A[1, 1] = X1;   A[1, 2] = X2;   A[1, 3] = 0;
-            A[2, 1] = 0;    A[2, 2] = -X2;  A[2, 3] = X3;
+            A[1, 1] = Z1;   A[1, 2] = Z2;   A[1, 3] = 0;
+            A[2, 1] = 0;    A[2, 2] = -Z2;  A[2, 3] = Z3;
             A[3, 1] = -1;   A[3, 2] = 1;    A[3, 3] = 1;
 
             B[1] = E1;      B[2] = E2;      B[3] = 0;
